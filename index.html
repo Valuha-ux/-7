@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="МИР БАЛЬНЫХ ТАНЦЕВ">
+    <meta name="Keywords" content="МИР БАЛЬНЫХ ТАНЦЕВ, ТАНЦЫ, БАЛЬНЫЕ ТАНЦЫ, МИР ТАНЦЕВ">
+    <title>Мир бальных танцев</title>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.ico">
+    <style>
+        /* ===== БАЗОВЫЕ СТИЛИ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #808080;
+            line-height: 1.6;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        /* ===== ЗАГОЛОВОК ===== */
+        .page-title {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+            .page-title img {
+                margin-right: 15px;
+            }
+
+        /* ===== ВКЛАДКИ ===== */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border: 2px solid #000000;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            min-width: 120px;
+            border-radius: 4px;
+        }
+
+            .tab:hover {
+                background-color: #0056b3;
+            }
+
+            .tab.active {
+                background-color: #0056b3;
+            }
+
+        /* ===== КОНТЕНТ ВКЛАДОК ===== */
+        .tab-content {
+            display: none;
+            padding: 15px 0;
+            clear: both;
+        }
+
+            .tab-content.active {
+                display: block;
+            }
+
+        .right-image {
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+        }
+
+        .tab-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+            overflow: hidden;
+        }
+
+        /* ===== СЛАЙДЕР ===== */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            height: 100%;
+        }
+
+            .slider img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: none;
+            }
+
+                .slider img:first-child {
+                    display: block;
+                }
+
+        .prev-button,
+        .next-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+            .prev-button:hover,
+            .next-button:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+        .prev-button {
+            left: 10px;
+        }
+
+        .next-button {
+            right: 10px;
+        }
+
+        /* ===== БЛОК С ПОДАРКОМ ===== */
+        .popa {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+            .popa h1 {
+                font-size: 28px;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+            .popa img {
+                width: 100%;
+                max-width: 350px;
+                height: auto;
+                border-radius: 5px;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            }
+
+        /* ===== ПОДВАЛ ===== */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f5a65c;
+            margin: 20px auto 0;
+            max-width: 840px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+            footer p {
+                font-size: 18px;
+                color: #333;
+                font-weight: bold;
+            }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+
+        /* Планшеты (768px - 1024px) */
+        @media (max-width: 1024px) {
+            #container {
+                max-width: 95%;
+                padding: 15px;
+            }
+
+            .page-title {
+                font-size: 40px;
+            }
+
+            .tab {
+                padding: 10px 15px;
+                min-width: 100px;
+                font-size: 15px;
+            }
+
+            .slider-container {
+                height: 350px;
+            }
+
+            .popa h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* Мобильные устройства (до 768px) */
+        @media (max-width: 768px) {
+            #container {
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            .page-title {
+                font-size: 30px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+                .page-title img {
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                    height: 60px;
+                    width: 85px;
+                }
+
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab {
+                width: 100%;
+                max-width: 300px;
+                margin-right: 0;
+                margin-bottom: 5px;
+                padding: 12px;
+            }
+
+            .right-image {
+                float: none;
+                display: block;
+                margin: 0 auto 15px auto;
+                max-width: 250px;
+            }
+
+            .tab-content p {
+                text-align: left;
+            }
+
+            .slider-container {
+                height: 300px;
+                max-width: 100%;
+            }
+
+            .prev-button,
+            .next-button {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .popa {
+                padding: 15px;
+            }
+
+                .popa h1 {
+                    font-size: 22px;
+                }
+
+            footer {
+                max-width: 100%;
+                border-radius: 0;
+                margin-top: 20px;
+            }
+
+                footer p {
+                    font-size: 16px;
+                }
+        }
+
+        /* Маленькие мобильные (до 480px) */
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 24px;
+            }
+
+                .page-title img {
+                    height: 50px;
+                    width: 70px;
+                }
+
+            .tab {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .right-image {
+                max-width: 200px;
+            }
+
+            .slider-container {
+                height: 250px;
+            }
+
+            .prev-button,
+            .next-button {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+
+            .popa h1 {
+                font-size: 20px;
+            }
+
+            .popa img {
+                max-width: 300px;
+            }
+        }
+
+        /* Очень маленькие экраны (до 360px) */
+        @media (max-width: 360px) {
+            .page-title {
+                font-size: 20px;
+            }
+
+            .tab {
+                font-size: 13px;
+                padding: 8px;
+            }
+
+            .slider-container {
+                height: 200px;
+            }
+
+            .popa h1 {
+                font-size: 18px;
+            }
+        }
+
+        /* Для больших экранов (более 1200px) */
+        @media (min-width: 1200px) {
+            #container {
+                max-width: 1000px;
+            }
+
+            .slider-container {
+                max-width: 900px;
+                height: 450px;
+            }
+
+            footer {
+                max-width: 1040px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="page-title">
+            <img src="img/logo.png" alt="Логотип Мира бальных танцев" height="70" width="100">
+            <span>МИР БАЛЬНЫХ ТАНЦЕВ</span>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="tab1" onclick="showTab('tab1')">История</div>
+            <div class="tab" data-tab="tab2" onclick="showTab('tab2')">Виды</div>
+            <div class="tab" data-tab="tab3" onclick="showTab('tab3')">Костюмы</div>
+            <div class="tab" data-tab="tab4" onclick="showTab('tab4')">Мое выступление</div>
+        </div>
+
+        <div class="tab-content active" id="tab1">
+            <img src="img/1.png" alt="История бальных танцев" class="right-image">
+            <p>
+                Средневековье и Возрождение: первые светские балы появились во Франции и Италии. Танцы стали важной частью придворной культуры, где строго соблюдались правила этикета.
+            </p>
+            <p>
+                Барокко и XVIII–XIX века: придворные танцы усложнились, появились павана, менуэт, полька и вальс. Танцы стали символом аристократического общества.
+            </p>
+            <p>
+                XX век: бальные танцы вышли за пределы дворцов и стали доступны широким слоям населения. В 1924 году в Англии начали стандартизировать движения, а в 1936 году прошёл первый чемпионат мира среди любителей.
+            </p>
+            <p>
+                Современность: сегодня существует две программы — европейская (стандарт) и латиноамериканская. В официальных соревнованиях исполняют 10 танцев: от вальса и танго до самбы и ча-ча-ча.
+            </p>
+        </div>
+
+        <div class="tab-content" id="tab2">
+            <img src="img/2.png" alt="Виды бальных танцев" class="right-image">
+            <p>Бальные танцы делятся на две программы: европейскую и латиноамериканскую. Европейская включает вальс, танго, фокстрот, квикстеп. Латиноамериканская — самба, ча-ча-ча, румба, джайв, пасодобль. Это сочетание спорта, искусства и культуры, популярное во всём мире.</p>
+        </div>
+
+        <div class="tab-content" id="tab3">
+            <img src="img/3.png" alt="Костюмы для бальных танцев" class="right-image">
+            <p>
+                Костюмы для бальных танцев делятся на два типа:
+            </p>
+            <p>
+                Стандарт — длинные платья у женщин, фрак у мужчин. Всё строго и элегантно.
+            </p>
+            <p>
+                Латина — яркие, короткие наряды с блестками, открытой спиной и выразительными деталями.
+            </p>
+            <p>
+                Одежда подчёркивает стиль танца и помогает выразить образ.
+            </p>
+        </div>
+
+        <div class="tab-content" id="tab4">
+            <img src="img/4.jpg" alt="Мое выступление" style="width: 100%; height: auto; max-height: 500px; object-fit: cover;">
+        </div>
+
+        <main>
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="img/i1.jpg" alt="Бальные танцы - выступление 1">
+                    <img src="img/i2.jpg" alt="Бальные танцы - выступление 2">
+                    <img src="img/i3.jpg" alt="Бальные танцы - выступление 3">
+                </div>
+                <button class="prev-button" aria-label="Предыдущее фото">&lt;</button>
+                <button class="next-button" aria-label="Следующее фото">&gt;</button>
+            </div>
+        </main>
+
+        <div class="popa">
+            <h1>Подарок от брестской области губернатору</h1>
+            <img src="img/5.jpg" alt="Подарок губернатору">
+        </div>
+    </div>
+
+    <footer>
+        <p>Добро пожаловать в мир бальных танцев!</p>
+    </footer>
+
+    <script>
+        // Функция для переключения вкладок
+        function showTab(tabId) {
+            // Скрываем все вкладки с контентом
+            var tabs = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+
+            // Показываем выбранную вкладку
+            var tab = document.getElementById(tabId);
+            if (tab) {
+                tab.classList.add("active");
+            }
+
+            // Убираем активный класс со всех кнопок вкладок
+            var activeTabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < activeTabs.length; i++) {
+                activeTabs[i].classList.remove("active");
+            }
+
+            // Добавляем активный класс к выбранной кнопке
+            var activeTab = document.querySelector('.tab[data-tab="' + tabId + '"]');
+            if (activeTab) {
+                activeTab.classList.add("active");
+            }
+        }
+
+        // Слайдер
+        document.addEventListener('DOMContentLoaded', function () {
+            const slider = document.querySelector('.slider');
+            const prevButton = document.querySelector('.prev-button');
+            const nextButton = document.querySelector('.next-button');
+
+            if (slider && prevButton && nextButton) {
+                const slides = Array.from(slider.querySelectorAll('img'));
+                const slideCount = slides.length;
+                let slideIndex = 0;
+
+                // Инициализация слайдера
+                updateSlider();
+
+                // Обработчики событий для кнопок
+                prevButton.addEventListener('click', function () {
+                    slideIndex = (slideIndex - 1 + slideCount) % slideCount;
+                    updateSlider();
+                });
+
+                nextButton.addEventListener('click', function () {
+                    slideIndex = (slideIndex + 1) % slideCount;
+                    updateSlider();
+                });
+
+                // Функция обновления слайдера
+                function updateSlider() {
+                    slides.forEach((slide, index) => {
+                        if (index === slideIndex) {
+                            slide.style.display = 'block';
+                        } else {
+                            slide.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Автопрокрутка (опционально)
+                // setInterval(function() {
+                //     slideIndex = (slideIndex + 1) % slideCount;
+                //     updateSlider();
+                // }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
